@@ -2,7 +2,7 @@
 
 import logging
 import sys
-from typing import Any
+from typing import Any, Dict, Optional
 
 import structlog
 
@@ -46,3 +46,74 @@ def log_info(logger: structlog.BoundLogger, message: str, **kwargs: Any) -> None
 def log_error(logger: structlog.BoundLogger, message: str, **kwargs: Any) -> None:
     """Log error level message."""
     logger.error(message, **kwargs)
+
+
+def log_with_context(
+    logger: structlog.BoundLogger,
+    level: int,
+    message: str,
+    correlation_id: Optional[str] = None,
+    extra_context: Optional[Dict[str, Any]] = None,
+    user_id: Optional[str] = None,
+    **kwargs: Any,
+) -> None:
+    """Log message with optional correlation and user context."""
+    context: Dict[str, Any] = {}
+    if correlation_id:
+        context["correlation_id"] = correlation_id
+    if user_id:
+        context["user_id"] = user_id
+    if extra_context:
+        context.update(extra_context)
+
+    logger.log(level, message, **context, **kwargs)
+
+
+def log_error_with_context(
+    logger: structlog.BoundLogger,
+    message: str,
+    error: Exception,
+    extra_context: Optional[Dict[str, Any]] = None,
+    correlation_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+) -> None:
+    """Log error with optional correlation and user context."""
+    context = extra_context or {}
+    context.update({"error_type": type(error).__name__, "error_message": str(error)})
+    log_with_context(
+        logger,
+        logging.ERROR,
+        f"{message}: {error}",
+        extra_context=context,
+        correlation_id=correlation_id,
+        user_id=user_id,
+        exc_info=True,
+    )
+
+
+def log_audit_event(
+    logger: structlog.BoundLogger,
+    action: str,
+    resource: str,
+    resource_id: str,
+    correlation_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+    extra_context: Optional[Dict[str, Any]] = None,
+) -> None:
+    """Log audit event with context."""
+    context = extra_context or {}
+    context.update(
+        {
+            "audit_action": action,
+            "audit_resource": resource,
+            "audit_resource_id": resource_id,
+        }
+    )
+    log_with_context(
+        logger,
+        logging.INFO,
+        f"Audit: {action} on {resource} (ID: {resource_id})",
+        extra_context=context,
+        correlation_id=correlation_id,
+        user_id=user_id,
+    )

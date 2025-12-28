@@ -19,22 +19,24 @@ class Settings(BaseSettings):
     # API
     api_title: str = "Configuration Engine"
     api_version: str = "0.1.0"
-    host: str = "0.0.0.0"
-    port: int = 8000
-    debug: bool = False
+
+    # CORS
+    cors_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
 
     # Database
     database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/task1_db"
     test_database_url: str = "sqlite+aiosqlite:///:memory:"
 
+    # Environment
+    environment: str = "development"
+
     # Logging
     log_level: str = "INFO"
 
-    # CORS
-    cors_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
-
-    # Environment
-    environment: str = "development"
+    # Server
+    debug: bool = False
+    host: str = "0.0.0.0"
+    port: int = 8000
 
 
 @lru_cache

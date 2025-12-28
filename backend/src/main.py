@@ -6,7 +6,7 @@ from typing import Any, AsyncGenerator, Dict
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.configs.settings import get_settings
+from src.configs import get_settings
 from src.infrastructure.database.connection import initialize_database
 from src.apis.routers import configurations
 from src.utils.logging import setup_logging, get_logger
