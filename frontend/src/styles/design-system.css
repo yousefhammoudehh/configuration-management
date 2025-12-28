@@ -1,0 +1,707 @@
+/* ===================================================================
+   FIGMA DESIGN REFERENCE - Configuration Engine UI
+   ===================================================================
+   
+   This file contains the CSS styling for the Configuration Engine
+   design system extracted from Figma. Use the class names below to
+   build out the actual components.
+*/
+
+/* ===================================================================
+   LAYOUT & STRUCTURE
+   =================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f7;
+}
+
+.sidebar {
+  width: 240px;
+  background: #e5e2fa;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.page-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 34px;
+  color: #1a1f26;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #97a3b7;
+  margin: 4px 0 0 0;
+}
+
+.page-header-right {
+  display: flex;
+  gap: 12px;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+.content-main {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.content-sidebar {
+  width: 280px;
+}
+
+/* ===================================================================
+   NAVIGATION (SIDEBAR)
+   =================================================================== */
+
+.nav-section {
+  padding: 16px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #97a3b7;
+}
+
+.nav-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.nav-item.active {
+  background: #ffffff;
+  color: #0b1739;
+}
+
+.nav-item-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ===================================================================
+   BUTTONS & ACTIONS
+   =================================================================== */
+
+.btn {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: #66d1a3;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #52c38f;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #0b1739;
+  border: 1.5px solid #d0d5dd;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+  border-color: #bcc4ce;
+}
+
+.btn-sm {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #97a3b7;
+}
+
+.btn-icon:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #1a1f26;
+}
+
+/* ===================================================================
+   FORMS & INPUTS
+   =================================================================== */
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group-row > .form-group {
+  flex: 1;
+}
+
+.form-label {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1a1f26;
+  margin-bottom: 8px;
+}
+
+.form-label.required::after {
+  content: "*";
+  color: #ef4444;
+  margin-left: 4px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 14px;
+  border: 1.5px solid #d0d5dd;
+  border-radius: 8px;
+  color: #1a1f26;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-input::placeholder,
+.form-select::placeholder,
+.form-textarea::placeholder {
+  color: #a3adb7;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #66d1a3;
+  box-shadow: 0 0 0 3px rgba(102, 209, 163, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-helper {
+  font-size: 12px;
+  color: #97a3b7;
+  margin-top: 6px;
+}
+
+/* ===================================================================
+   CARDS & SECTIONS
+   =================================================================== */
+
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1f26;
+  margin: 0 0 16px 0;
+}
+
+.card-subtitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #97a3b7;
+  margin-bottom: 12px;
+}
+
+.section {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1f26;
+  margin: 0 0 16px 0;
+}
+
+/* ===================================================================
+   TABLES
+   =================================================================== */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-header th {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  text-align: left;
+  border-right: 1px solid #e5e7eb;
+}
+
+.table-header th:last-child {
+  border-right: none;
+}
+
+.table-body td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #1a1f26;
+  font-size: 14px;
+}
+
+.table-body tr:last-child td {
+  border-bottom: none;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+.table-cell-checkbox {
+  width: 40px;
+  padding-left: 0;
+}
+
+.table-cell-actions {
+  width: 80px;
+  text-align: right;
+  padding-right: 0;
+}
+
+/* ===================================================================
+   BADGES & TAGS
+   =================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.badge-list {
+  background: #fef08a;
+  color: #854d0e;
+}
+
+.badge-text {
+  background: #cffafe;
+  color: #164e63;
+}
+
+.badge-number {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-date {
+  background: #fce7f3;
+  color: #831843;
+}
+
+/* ===================================================================
+   TOGGLES & SWITCHES
+   =================================================================== */
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  background: #d1d5db;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.toggle.active {
+  background: #66d1a3;
+}
+
+.toggle-knob {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle.active .toggle-knob {
+  left: 22px;
+}
+
+/* ===================================================================
+   VALIDATION & PARENT CONDITION RULES
+   =================================================================== */
+
+.condition-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.condition-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.condition-field-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.condition-field.flex-1 {
+  flex: 1;
+}
+
+.condition-field.flex-2 {
+  flex: 2;
+}
+
+.condition-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.add-rule-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #66d1a3;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.add-rule-button:hover {
+  color: #52c38f;
+}
+
+/* ===================================================================
+   LANGUAGE VARIANTS TABLE
+   =================================================================== */
+
+.language-variants-table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.language-variants-table .table-header th {
+  padding: 12px 16px;
+  background: transparent;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 600;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.language-variants-table .table-body td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.language-variants-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.language-variants-row > input,
+.language-variants-row > select,
+.language-variants-row > textarea {
+  flex: 1;
+}
+
+/* ===================================================================
+   INFO SIDEBAR / RIGHT PANEL
+   =================================================================== */
+
+.info-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.info-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.info-tab {
+  flex: 1;
+  padding: 12px 16px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #97a3b7;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+}
+
+.info-tab.active {
+  color: #66d1a3;
+  border-bottom-color: #66d1a3;
+}
+
+.info-tab:hover {
+  color: #1a1f26;
+}
+
+.info-content {
+  padding: 16px;
+}
+
+/* ===================================================================
+   EMPTY STATE
+   =================================================================== */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #1a1f26;
+  margin: 0 0 8px 0;
+}
+
+.empty-state-description {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #97a3b7;
+  margin: 0 0 24px 0;
+}
+
+/* ===================================================================
+   DESIGN TOKENS
+   =================================================================== */
+
+:root {
+  /* Primary Colors */
+  --color-primary-green: #66d1a3;
+  --color-primary-green-dark: #52c38f;
+  --color-primary-blue: #e5e2fa;
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #97a3b7;
+  --color-text-dark: #1a1f26;
+
+  /* Background Colors */
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #0b1739;
+
+  /* Border Colors */
+  --color-border-light: rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-xs: 10px;
+  --spacing-sm: 16px;
+  --spacing-base: 20px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 8px;
+
+  /* Typography */
+  --font-family-primary: "Inter", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --font-size-sm: 14px;
+  --font-size-md: 18px;
+  --font-size-lg: 40px;
+
+  --line-height-tight: 20px;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 48px;
+}
+
+/* ===================================================================
+   TYPOGRAPHY UTILITIES
+   =================================================================== */
+
+.text-primary {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  color: var(--color-text-secondary);
+}
+
+.text-dark {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  color: var(--color-text-dark);
+}
+
+.heading-lg {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+}
+
+.body-md {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+.body-sm {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-tight);
+}

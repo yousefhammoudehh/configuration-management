@@ -1,0 +1,715 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:global(.landing-layout) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f8fe;
+}
+
+:global(.landing-content) {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f6f8fb;
+}
+
+.canvas {
+  position: relative;
+  flex: 1;
+  background: #f6f8fb;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 32px 12px 32px;
+}
+
+.pageHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pageTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #1a1f26;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: #8a94a6;
+  margin: 0;
+}
+
+.pageActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pillButton {
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid #d7dee8;
+  background: #ffffff;
+  padding: 0 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1f26;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.pillButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pillPrimary {
+  background: linear-gradient(
+    244.94deg,
+    #66d1a3 1.39%,
+    #66d1a3 21.41%,
+    #4fa1d6 67.23%,
+    #4285f4 93.92%
+  );
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 10px rgba(102, 209, 163, 0.18);
+}
+
+.workspace {
+  display: flex;
+  gap: 20px;
+  padding: 0 32px 40px 32px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.mainColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: calc(100% - 260px);
+}
+
+.formCard {
+  background: #ffffff;
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(17, 24, 39, 0.04);
+}
+
+.helperText {
+  color: #8a94a6;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 6px;
+}
+
+.helperTextSpaced {
+  margin-bottom: 16px;
+}
+
+.fieldRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.flex1 {
+  flex: 1;
+  min-width: 240px;
+}
+
+.navRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.secondaryButton {
+  background: #f4f6fa;
+  color: #1a1f26;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+.primaryButton {
+  background: linear-gradient(
+    244.94deg,
+    #66d1a3 1.39%,
+    #66d1a3 21.41%,
+    #4fa1d6 67.23%,
+    #4285f4 93.92%
+  );
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 700;
+}
+
+.ghostButton {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 600;
+  color: #1a1f26;
+}
+
+.toggleDisabled {
+  pointer-events: none;
+}
+
+.errorText {
+  color: #c2413d;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.errorTextFullSpan {
+  grid-column: 1 / -1;
+}
+
+.inputError {
+  border-color: #dc2626 !important;
+}
+
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.twoColumnGridTight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.validitySingle {
+  max-width: 100%;
+}
+
+.translationList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.translationRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.translationFields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.translationRemove {
+  margin-top: 24px;
+}
+
+.betweenInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.multiSelect {
+  min-height: 44px;
+}
+
+.sectionNoBorder {
+  border-bottom: none;
+  margin-bottom: 32px;
+}
+
+.toggleLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.tableActions {
+  text-align: right;
+}
+
+.stepperPanel {
+  --sidebar-w: 240px;
+  --item-h: 40px;
+  --gap: 10px;
+  --rail-x: 12px;
+  --rail-w: 2px;
+  --dot: 8px;
+  --stub-w: 10px;
+  --card-r: 10px;
+  width: var(--sidebar-w);
+  background: transparent;
+  border: none;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  box-shadow: none;
+  padding: 0;
+}
+
+.stepperHeader {
+  padding: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1d29;
+  line-height: 18px;
+}
+
+.stepList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: calc(var(--item-h) / 2) 0 calc(var(--item-h) / 2) 0;
+  margin: 0;
+  list-style: none;
+  z-index: 0;
+}
+
+.stepList::before {
+  content: "";
+  position: absolute;
+  left: var(--rail-x);
+  top: calc(var(--item-h) / 2);
+  bottom: calc(var(--item-h) / 2);
+  z-index: 1;
+  width: var(--rail-w);
+  background: #e2e8f0;
+}
+
+.stepRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  height: var(--item-h);
+}
+
+.connectorArea {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  height: 100%;
+}
+
+.stepDotWrap {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid #d7dee8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  margin-left: calc(var(--rail-x) - var(--dot) / 2);
+  z-index: 1;
+}
+
+.stepDotActiveWrap {
+  background: #66d1a3;
+  border-color: #66d1a3;
+  box-shadow: 0 0 0 3px rgba(102, 209, 163, 0.12);
+}
+
+.stepDotCompleteWrap {
+  background: #66d1a3;
+  border-color: #66d1a3;
+}
+
+.stepDotInner {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.stepDotInnerActive {
+  background: #ffffff;
+}
+
+.stub {
+  width: var(--stub-w);
+  height: 2px;
+  background: #e2e8f0;
+  flex-shrink: 0;
+  margin-left: 2px;
+  z-index: 1;
+}
+
+.stepCard {
+  flex: 1;
+  width: 100%;
+  height: var(--item-h);
+  border: 1px solid #e6ebf1;
+  border-radius: var(--card-r);
+  background: #ffffff;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  transition: all 0.2s ease;
+  text-align: left;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+.stepCardActive {
+  border-color: #66d1a3;
+  background: #f6fffb;
+  box-shadow: 0 4px 12px rgba(102, 209, 163, 0.12);
+}
+
+.stepCardComplete {
+  border-color: #cbd5e1;
+}
+
+.stepCardDisabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.stepTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1f26;
+  line-height: 16px;
+}
+
+.stepCaption {
+  font-size: 11px;
+  color: #9aa3b2;
+  line-height: 14px;
+}
+
+.stepCard:hover:not(:disabled),
+.stepCard:focus-visible {
+  border-color: #66d1a3;
+  box-shadow: 0 4px 12px rgba(102, 209, 163, 0.12);
+  outline: none;
+}
+
+.validationCard {
+  margin-top: 20px;
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  padding: 20px;
+  background: #f9fbfe;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.validationHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.validationTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1f26;
+}
+
+.validationSubtitle {
+  font-size: 12px;
+  color: #8a94a6;
+}
+
+.toggleRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggleLabel {
+  font-size: 13px;
+  color: #1a1f26;
+}
+
+.listBlock {
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  background: #f9fbfe;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listModeRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.listModeTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1f26;
+}
+
+.listModeOptions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.radioOption {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.listOptionsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listOptionsTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1f26;
+}
+
+.listOptionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.optionRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.iconButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid #e6ebf1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.iconButtonDanger {
+  border-color: rgba(255, 89, 94, 0.2);
+  color: #ff595e;
+  background: #ffffff;
+}
+
+.iconButtonDanger:hover {
+  background: #fff1f2;
+}
+
+.iconImg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.addLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #66d1a3;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.validityRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.validityLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1f26;
+}
+
+.validityInputWrap {
+  max-width: 100%;
+}
+
+:global(.form-group-row) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.parentConditionCard {
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  background: #f9fbfe;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.parentConditionCard :global(.condition-row) {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  gap: 16px;
+  align-items: center;
+}
+
+.parentConditionCard :global(.condition-actions) {
+  margin-left: auto;
+}
+
+.parentCard {
+  background: #ffffff;
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(17, 24, 39, 0.04);
+}
+
+.cardDivider {
+  height: 1px;
+  background: #eaecef;
+  margin: 20px 0 16px;
+}
+
+.cardFooterRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+@media (max-width: 1200px) {
+  .topBar {
+    width: auto;
+    right: 24px;
+    max-width: calc(100% - 280px);
+  }
+
+  .workspace {
+    flex-direction: column;
+    padding: 180px 20px 32px 20px;
+  }
+
+  .mainColumn {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .stepperPanel {
+    position: relative;
+    top: 0;
+    width: 100%;
+    border: 1px solid #e6ebf1;
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 16px 12px;
+  }
+
+  .stepCard {
+    width: 100%;
+  }
+
+  .stepList::before {
+    display: none;
+  }
+
+  .connectorArea {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
+  .workspace {
+    padding: 24px 16px 32px 16px;
+  }
+
+  .pillButton {
+    padding: 0 12px;
+  }
+
+  .navRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .secondaryButton,
+  .primaryButton {
+    width: 100%;
+    text-align: center;
+  }
+}
