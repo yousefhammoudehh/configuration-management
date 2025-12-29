@@ -30,6 +30,7 @@ class ConfigurationService:
         parent_config_id: UUID | None = None,
         parent_conditions: list[ParentCondition] | None = None,
         translations: list[Translation] | None = None,
+        correlation_id: str | None = None,
     ) -> Configuration:
         """Create a new configuration."""
         logger.info("Creating configuration", key=key)
@@ -53,7 +54,7 @@ class ConfigurationService:
             active=True,
         )
 
-        return await self.repository.create(config)
+        return await self.repository.create(config, correlation_id=correlation_id)
 
     async def get_configuration(self, config_id: UUID) -> Configuration | None:
         """Get configuration by ID."""
@@ -68,6 +69,7 @@ class ConfigurationService:
     async def update_configuration(
         self,
         config_id: UUID,
+        correlation_id: str | None = None,
         **updates,
     ) -> Configuration | None:
         """Update a configuration."""
@@ -76,12 +78,12 @@ class ConfigurationService:
         # Don't allow updating key
         updates.pop("key", None)
 
-        return await self.repository.update(config_id, updates)
+        return await self.repository.update(config_id, updates, correlation_id=correlation_id)
 
-    async def delete_configuration(self, config_id: UUID) -> bool:
+    async def delete_configuration(self, config_id: UUID, correlation_id: str | None = None) -> bool:
         """Delete a configuration."""
         logger.info("Deleting configuration", config_id=str(config_id))
-        return await self.repository.delete(config_id)
+        return await self.repository.delete(config_id, correlation_id=correlation_id)
 
     async def get_parent_options(self, current_config_id: UUID | None = None) -> list[Configuration]:
         """Get available parent configurations (excluding current and its descendants)."""

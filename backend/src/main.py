@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.configs import get_settings
 from src.infrastructure.database.connection import initialize_database
+from src.infrastructure.database import import_models
 from src.apis.routers import configurations
 from src.utils.logging import setup_logging, get_logger
 
@@ -23,8 +24,13 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     logger.info("Starting Configuration Engine Backend", environment=settings.environment)
 
     # Initialize database
+    import_models()
     await initialize_database(settings.database_url)
     logger.info("Database initialized")
+
+    from src.register_event_handlers import register_all_event_handlers
+
+    register_all_event_handlers()
 
     yield
 
