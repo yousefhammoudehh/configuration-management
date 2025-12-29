@@ -7,6 +7,12 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.infrastructure.database.models import Configuration as ConfigurationModel
+from src.domain.events.configuration_events import (
+    ConfigurationCreated,
+    ConfigurationDeleted,
+    ConfigurationUpdated,
+    configuration_events,
+)
 from src.domain.entities.configuration import (
     Configuration as ConfigurationEntity,
     ParentCondition,
@@ -25,7 +31,7 @@ class ConfigurationRepository:
         """Initialize repository."""
         self.session = session
 
-    async def create(self, config: ConfigurationEntity) -> ConfigurationEntity:
+    async def create(self, config: ConfigurationEntity, correlation_id: str | None = None) -> ConfigurationEntity:
         """Create a new configuration."""
         model = ConfigurationModel(
             id=config.id,
@@ -50,9 +56,23 @@ class ConfigurationRepository:
             active=config.active,
         )
         self.session.add(model)
-        await self.session.commit()
+        await self.session.flush()
         logger.info("Configuration created", key=config.key)
-        return await self._model_to_domain(model)
+        created_config = await self._model_to_domain(model)
+        await self.session.commit()
+
+        event = ConfigurationCreated(
+            config_id=created_config.id,
+            key=created_config.key,
+            label=created_config.label,
+            data_type=created_config.data_type,
+            created_at=created_config.created_at,
+            correlation_id=correlation_id or "unknown",
+            configuration_entity=created_config,
+        )
+        configuration_events.emit(event)
+
+        return created_config
 
     async def get_by_id(self, config_id: UUID) -> ConfigurationEntity | None:
         """Get configuration by ID."""
@@ -87,7 +107,9 @@ class ConfigurationRepository:
         configs = [await self._model_to_domain(model) for model in models]
         return configs, total
 
-    async def update(self, config_id: UUID, updates: dict) -> ConfigurationEntity | None:
+    async def update(
+        self, config_id: UUID, updates: dict, correlation_id: str | None = None
+    ) -> ConfigurationEntity | None:
         """Update a configuration."""
         stmt = select(ConfigurationModel).where(ConfigurationModel.id == config_id)
         result = await self.session.execute(stmt)
@@ -109,11 +131,26 @@ class ConfigurationRepository:
                 )
             setattr(model, key, value)
 
-        await self.session.commit()
+        await self.session.flush()
         logger.info("Configuration updated", config_id=str(config_id))
-        return await self._model_to_domain(model)
+        updated_config = await self._model_to_domain(model)
+        await self.session.commit()
 
-    async def delete(self, config_id: UUID) -> bool:
+        event = ConfigurationUpdated(
+            config_id=updated_config.id,
+            key=updated_config.key,
+            label=updated_config.label,
+            data_type=updated_config.data_type,
+            updated_at=updated_config.updated_at,
+            changes=updates,
+            correlation_id=correlation_id or "unknown",
+            configuration_entity=updated_config,
+        )
+        configuration_events.emit(event)
+
+        return updated_config
+
+    async def delete(self, config_id: UUID, correlation_id: str | None = None) -> bool:
         """Delete a configuration."""
         stmt = select(ConfigurationModel).where(ConfigurationModel.id == config_id)
         result = await self.session.execute(stmt)
@@ -122,9 +159,24 @@ class ConfigurationRepository:
         if not model:
             return False
 
+        configuration_entity = await self._model_to_domain(model)
+
         await self.session.delete(model)
+        await self.session.flush()
         await self.session.commit()
         logger.info("Configuration deleted", config_id=str(config_id))
+
+        event = ConfigurationDeleted(
+            config_id=configuration_entity.id,
+            key=configuration_entity.key,
+            label=configuration_entity.label,
+            data_type=configuration_entity.data_type,
+            deleted_at=configuration_entity.updated_at,
+            correlation_id=correlation_id or "unknown",
+            configuration_entity=configuration_entity,
+        )
+        configuration_events.emit(event)
+
         return True
 
     async def _model_to_domain(self, model: ConfigurationModel) -> ConfigurationEntity:

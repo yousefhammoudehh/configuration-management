@@ -21,8 +21,8 @@ services:
 
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: task-1/backend/Dockerfile
     container_name: configurations-backend
     environment:
       DATABASE_URL: postgresql+asyncpg://admin:password@postgres:5432/configurations
@@ -41,7 +41,7 @@ services:
     networks:
       - app-network
     volumes:
-      - ./backend/src:/app/src
+      - ./backend/src:/app/task-1/backend/src
 
   frontend:
     build:

@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+WORKDIR /app/task-1/backend
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -11,13 +11,14 @@ RUN apt-get update && apt-get install -y \
 RUN pip install poetry
 
 # Copy project files
-COPY pyproject.toml poetry.lock* ./
+COPY task-1/backend/pyproject.toml task-1/backend/poetry.lock* ./
+COPY op.python-utils /app/op.python-utils
 
 # Install dependencies
 RUN poetry config virtualenvs.create false && poetry install --only main --no-root
 
 # Copy application
-COPY . .
+COPY task-1/backend /app/task-1/backend
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
