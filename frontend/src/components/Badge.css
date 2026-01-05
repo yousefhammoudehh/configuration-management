@@ -1,3 +1,7 @@
+/* ===================================================================
+   Badge Component Styles
+   =================================================================== */
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -9,6 +13,8 @@
   line-height: 16px;
   white-space: nowrap;
 }
+
+/* Badge Variants */
 
 .badge-list {
   background: #fef08a;

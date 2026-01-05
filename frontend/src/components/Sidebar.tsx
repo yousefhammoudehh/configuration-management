@@ -7,7 +7,7 @@ export function Sidebar() {
       {/* OP Salesforce Dropdown */}
       <div className="sidebar-product-selector">
         <img src={salesforceSrc} alt="Salesforce" className="sidebar-icon-img" />
-        <span className="selector-text">OP Salesforce</span>
+        <span className="nav-item-text">OP Salesforce</span>
         <span className="selector-chevron">›</span>
       </div>
 

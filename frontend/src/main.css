@@ -1,29 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
+/* ===================================================================
+   Design Tokens & CSS Variables
+   =================================================================== */
+
 :root {
-  /* Primary Colors */
+  /* Colors - Primary */
   --color-primary-dark: #0b1739;
   --color-primary-green: #66d1a3;
+  --color-primary-green-hover: #52c38f;
   --color-primary-blue: #e5e2fa;
 
-  /* Text Colors */
+  /* Colors - Text */
   --color-text-light: #ffffff;
   --color-text-primary: #ffffff;
   --color-text-secondary: #97a3b7;
   --color-text-dark: #1a1f26;
 
-  /* Background Colors */
+  /* Colors - Background */
   --color-bg-white: #ffffff;
   --color-bg-light: #f9fafb;
   --color-bg-dark: #0b1739;
 
-  /* Border & Shadow */
+  /* Colors - Borders & Shadows */
   --color-border-light: #e5e7eb;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
-  /* Spacing Scale (8px base) */
+  /* Spacing Scale */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-base: 12px;
@@ -32,15 +34,17 @@
   --spacing-xl: 24px;
   --spacing-2xl: 32px;
 
-  /* Typography */
+  /* Typography - Font Family */
   --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
+
+  /* Typography - Font Weights */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Font Sizes */
+  /* Typography - Font Sizes */
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-base: 16px;
@@ -48,11 +52,20 @@
   --font-size-xl: 20px;
   --font-size-2xl: 24px;
 
-  /* Border Radius */
+  /* Borders */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
+
+/* ===================================================================
+   Global Styles
+   =================================================================== */
 
 * {
   margin: 0;
@@ -81,7 +94,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Typography */
+/* ===================================================================
+   Typography
+   =================================================================== */
+
 h1,
 h2,
 h3,
@@ -117,10 +133,13 @@ a {
 }
 
 a:hover {
-  color: #5ab896;
+  color: var(--color-primary-green-hover);
 }
 
-/* Form Elements */
+/* ===================================================================
+   Form Elements
+   =================================================================== */
+
 input,
 select,
 textarea {
@@ -168,7 +187,10 @@ textarea {
   min-height: 100px;
 }
 
-/* Buttons - Base Styles */
+/* ===================================================================
+   Buttons
+   =================================================================== */
+
 button {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
@@ -185,7 +207,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Tables */
+/* ===================================================================
+   Tables
+   =================================================================== */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -211,7 +236,10 @@ tr:hover {
   background: var(--color-bg-light);
 }
 
-/* Scrollbar Styling */
+/* ===================================================================
+   Scrollbar Styling
+   =================================================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -230,7 +258,10 @@ tr:hover {
   background: #9ca3af;
 }
 
-/* Utility Classes */
+/* ===================================================================
+   Utility Classes - Text
+   =================================================================== */
+
 .text-center {
   text-align: center;
 }
@@ -250,6 +281,10 @@ tr:hover {
 .text-success {
   color: var(--color-primary-green);
 }
+
+/* ===================================================================
+   Utility Classes - Spacing
+   =================================================================== */
 
 .mb-sm {
   margin-bottom: var(--spacing-sm);
@@ -275,21 +310,10 @@ tr:hover {
   margin-top: var(--spacing-lg);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  :root {
-    --font-size-base: 14px;
-    --font-size-lg: 16px;
-    --font-size-xl: 18px;
-    --font-size-2xl: 20px;
-  }
+/* ===================================================================
+   Animations
+   =================================================================== */
 
-  button {
-    padding: var(--spacing-sm) var(--spacing-base);
-  }
-}
-
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -316,4 +340,21 @@ tr:hover {
 
 .slide-in {
   animation: slideIn 0.2s ease;
+}
+
+/* ===================================================================
+   Responsive
+   =================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
+    --font-size-2xl: 20px;
+  }
+
+  button {
+    padding: var(--spacing-sm) var(--spacing-base);
+  }
 }

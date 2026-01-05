@@ -1,3 +1,7 @@
+/* ===================================================================
+   Card Component Styles
+   =================================================================== */
+
 .card {
   background: var(--color-bg-light);
   border: 1px solid var(--color-border-light);
@@ -7,6 +11,8 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Card Title */
+
 .card-title {
   font-family: var(--font-family);
   font-weight: var(--font-weight-semibold);
@@ -15,6 +21,8 @@
   color: var(--color-text-dark);
   margin: 0 0 16px 0;
 }
+
+/* Card Content */
 
 .card-content {
   display: flex;

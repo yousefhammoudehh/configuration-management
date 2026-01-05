@@ -1,7 +1,15 @@
+/* ===================================================================
+   Edit Configuration Page
+   =================================================================== */
+
 .edit-configuration {
   padding: var(--spacing-lg);
   max-width: 1200px;
 }
+
+/* ===================================================================
+   Form Header & Titles
+   =================================================================== */
 
 .form-header {
   display: flex;
@@ -9,22 +17,22 @@
   align-items: flex-start;
   margin-bottom: var(--spacing-xl);
   padding: 24px 32px;
-  border-bottom: 1px solid #f6f5ff;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .form-title {
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  color: #1a1f26;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-dark);
   margin: 0 0 8px 0;
   letter-spacing: -0.3px;
 }
 
 .form-subtitle {
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  color: #60646d;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
   margin: 0;
   line-height: 20px;
 }
@@ -47,6 +55,10 @@
   gap: var(--spacing-base);
 }
 
+/* ===================================================================
+   Form Layout
+   =================================================================== */
+
 .form-sections {
   display: flex;
   flex-direction: column;
@@ -61,7 +73,7 @@
 
 .form-grid textarea {
   font-family: inherit;
-  border: 1.5px solid #d0d5dd;
+  border: 1.5px solid var(--color-border-form);
   border-radius: var(--radius-md);
   padding: var(--spacing-base);
   font-size: var(--font-size-base);
@@ -72,8 +84,12 @@
   border-color: var(--color-primary-green);
 }
 
+/* ===================================================================
+   Form Fields & States
+   =================================================================== */
+
 .readonly-field {
-  background-color: #f9fafb !important;
+  background-color: var(--color-bg-light-secondary) !important;
   color: var(--color-text-secondary) !important;
   cursor: not-allowed !important;
 }
@@ -86,7 +102,7 @@
 }
 
 .btn-danger {
-  color: #ef4444;
+  color: var(--color-error);
 }
 
 .btn-icon-img {
@@ -94,6 +110,10 @@
   height: 14px;
   display: block;
 }
+
+/* ===================================================================
+   Sections & Tables
+   =================================================================== */
 
 .table-actions-header {
   width: 80px;
@@ -113,26 +133,34 @@
 
 .section-actions {
   display: flex;
-  gap: 12px;
+  gap: var(--spacing-sm);
   justify-content: flex-end;
 }
+
+/* ===================================================================
+   Toggle & Layout Variants
+   =================================================================== */
 
 .toggle-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-sm);
   cursor: pointer;
 }
 
 .between-inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: var(--spacing-sm);
 }
 
 .multi-select {
   min-height: 44px;
 }
+
+/* ===================================================================
+   Rules, Conditions & Translations
+   =================================================================== */
 
 .rules-container,
 .conditions-container,
@@ -162,7 +190,7 @@
 .condition-row input,
 .translation-row input {
   padding: var(--spacing-sm) var(--spacing-base);
-  border: 1.5px solid #d0d5dd;
+  border: 1.5px solid var(--color-border-form);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
   flex: 1;
@@ -181,19 +209,8 @@
   flex-wrap: wrap;
 }
 
-.condition-row select:nth-child(1),
-.condition-row input:nth-child(2),
-.condition-row input:nth-child(3) {
+.condition-row .condition-field {
   min-width: 150px;
-}
-
-.translation-row input:nth-child(1) {
-  min-width: 100px;
-}
-
-.translation-row input:nth-child(2),
-.translation-row input:nth-child(3) {
-  flex: 2;
 }
 
 .conditions-container h3 {
@@ -203,9 +220,13 @@
   color: var(--color-text-dark);
 }
 
+/* ===================================================================
+   Form Validation & Errors
+   =================================================================== */
+
 .error-message {
-  background: #fee2e2;
-  color: #991b1b;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
   padding: var(--spacing-base);
   border-radius: var(--radius-md);
   margin-bottom: var(--spacing-lg);
@@ -217,6 +238,10 @@
   color: var(--color-text-secondary);
 }
 
+/* ===================================================================
+   Form Actions
+   =================================================================== */
+
 .form-actions {
   display: flex;
   justify-content: space-between;
@@ -225,6 +250,10 @@
   padding-top: var(--spacing-lg);
   border-top: 1px solid var(--color-border-light);
 }
+
+/* ===================================================================
+   Responsive
+   =================================================================== */
 
 @media (max-width: 768px) {
   .form-header {

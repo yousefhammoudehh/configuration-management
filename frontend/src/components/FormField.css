@@ -1,9 +1,15 @@
+/* ===================================================================
+   Form Field Component Styles
+   =================================================================== */
+
 .form-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 24px;
 }
+
+/* Form Label */
 
 .form-label {
   display: block;
@@ -15,11 +21,13 @@
 }
 
 .form-label .required {
-  color: #ef4444;
+  color: var(--color-error);
   margin-left: 4px;
 }
 
+/* Form Errors */
+
 .form-error {
   font-size: var(--font-size-xs);
-  color: #ef4444;
+  color: var(--color-error);
 }
