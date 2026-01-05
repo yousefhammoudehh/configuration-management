@@ -31,20 +31,20 @@ export function ConfigurationsList() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
-  const { configurations, setConfigurations, total, limit, offset } = useConfigurationStore();
+  const { configurations, setConfigurations, limit, offset } = useConfigurationStore();
 
-  const loadConfigurations = useCallback(async () => {
+  const loadConfigurations = useCallback(async (pageLimit = limit, pageOffset = offset) => {
     try {
       setIsLoading(true);
       setError(null);
-      const response = await configurationsAPI.listConfigurations(100, 0);
+      const response = await configurationsAPI.listConfigurations(pageLimit, pageOffset);
       setConfigurations(response.items, response.total, response.limit, response.offset);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load configurations');
     } finally {
       setIsLoading(false);
     }
-  }, [setConfigurations]);
+  }, [limit, offset, setConfigurations]);
 
   useEffect(() => {
     void loadConfigurations();
@@ -72,9 +72,7 @@ export function ConfigurationsList() {
     if (!window.confirm(`Delete configuration "${key}"?`)) return;
     try {
       await configurationsAPI.deleteConfiguration(id);
-      const nextConfigs = configurations.filter((config) => config.id !== id);
-      const nextTotal = Math.max(total - 1, 0);
-      setConfigurations(nextConfigs, nextTotal, limit, offset);
+      await loadConfigurations();
       setSelected((prev) => {
         const next = new Set(prev);
         next.delete(id);

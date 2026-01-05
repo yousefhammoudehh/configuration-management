@@ -40,7 +40,7 @@
 }
 
 .pageTitle {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-family);
   font-size: 18px;
   line-height: 24px;
   font-weight: 700;
@@ -49,7 +49,7 @@
 }
 
 .pageSubtitle {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-family);
   font-size: 13px;
   line-height: 18px;
   color: #8a94a6;
@@ -68,7 +68,7 @@
   border: 1px solid #d7dee8;
   background: #ffffff;
   padding: 0 14px;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-family);
   font-size: 13px;
   font-weight: 600;
   color: #1a1f26;
